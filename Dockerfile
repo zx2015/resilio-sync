@@ -6,10 +6,7 @@ RUN export DEBIAN_FRONTEND='noninteractive' && \
     apt-get install -qqy wget gnupg && \
     apt-get -s dist-upgrade -y
 
-COPY resilio-sync.list /etc/apt/sources.list.d/resilio-sync.list
-
-RUN wget -qO - https://linux-packages.resilio.com/resilio-sync/key.asc | apt-key add - && \
-    apt-get update -qq && \
+RUN apt-get update -qq && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/*
 
